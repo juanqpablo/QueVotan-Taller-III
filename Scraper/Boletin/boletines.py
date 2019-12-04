@@ -41,9 +41,10 @@ class Boletines(Listado):
         data = r.text
         soup = BS(data, 'xml')
         boli = soup.find_all("PROYECTO_LEY")
-
+        print boli
         for i in boli:
             bole = i["BOLETIN"]
+            bDes = i["PROYECTO_LEY"]
             bole = re.split('[ , .]', bole)
             for bo in bole:
                 if regex.search(bo):

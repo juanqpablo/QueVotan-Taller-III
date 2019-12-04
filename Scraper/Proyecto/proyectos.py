@@ -17,7 +17,7 @@ nlp = spacy.load('es')
 class Analisis():
     #nlp = spacy.load('es')
     #spanishstemmer = SnowballStemmer('spanish')
-    
+
     def normalize(text):
         doc = nlp(text)
         words = [t.orth_ for t in doc if not (t.is_punct | t.is_stop)]
@@ -64,13 +64,13 @@ class Proyectos(Listado):
         if (soup.find("VotacionProyectoLey")):
             _id = proyecto.Id.text.encode("utf-8")
             _id = _id.decode()
-            nombre = proyecto.Nombre.text.encode("utf-8")    
+            nombre = proyecto.Nombre.text.encode("utf-8")
             nombre = nombre.decode()
-            
+
             tags = Analisis.normalize(nombre) #limpio y tokenizo
             #print (str(tags) + '\n')
-            
-            
+
+
             for j in votacion:
                 id_votacion = j.Id.text.encode("utf-8")
                 id_votacion = id_votacion.decode()
